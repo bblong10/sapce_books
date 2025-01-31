@@ -1,0 +1,107 @@
+<div class="container-fluid">
+  <div class="product-header">
+    <h1>Thêm Nhân Viên Mới</h1>
+  </div>
+  <hr />
+
+  <div class="new-employee-container">
+    <form (ngSubmit)="onSubmit()" #employeeForm="ngForm" autocomplete="off">
+      <!-- Họ tên và Địa chỉ -->
+      <div class="row">
+        <div class="col">
+          <label for="fullName">Họ và Tên</label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            class="form-control"
+            [(ngModel)]="employee.fullName"
+            placeholder="Nhập họ tên"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div class="col">
+          <label for="address">Địa chỉ</label>
+          <input
+            type="text"
+            id="address"
+            name="address"
+            class="form-control"
+            [(ngModel)]="employee.address"
+            placeholder="Nhập địa chỉ"
+            autocomplete="off"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- Ngày sinh và Email -->
+      <div class="row">
+        <div class="col">
+          <label for="dob">Ngày Sinh</label>
+          <input
+            type="date"
+            id="dob"
+            name="dob"
+            class="form-control"
+            [(ngModel)]="employee.dob"
+            required
+          />
+        </div>
+        <div class="col">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            [(ngModel)]="employee.email"
+            placeholder="Nhập địa chỉ email"
+            autocomplete="off"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- Mật khẩu -->
+      <div class="row">
+        <div class="col">
+          <label for="password">Mật Khẩu</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            [(ngModel)]="employee.password"
+            placeholder="Nhập mật khẩu"
+            required
+          />
+        </div>
+        <div class="col">
+          <label for="confirmPassword">Nhập Lại Mật Khẩu</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            class="form-control"
+            [(ngModel)]="employee.confirmPassword"
+            placeholder="Nhập lại mật khẩu"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- Nút Thêm Nhân Viên -->
+      <button
+        type="submit"
+        class="btn btn-primary mt-3"
+        [disabled]="
+          !employeeForm.valid || employee.password !== employee.confirmPassword
+        "
+      >
+        Thêm Nhân Viên
+      </button>
+    </form>
+  </div>
+</div>

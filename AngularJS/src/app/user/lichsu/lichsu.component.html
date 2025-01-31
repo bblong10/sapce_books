@@ -1,0 +1,32 @@
+<div class="loan-history">
+  <h1>Lịch Sử Mượn Sách</h1>
+  <div class="history-container">
+    <table class="history-table" *ngIf="loans.length > 0; else noLoansTemplate">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tên Sách</th>
+          <th>Tác Giả</th>
+          <th>Ngày Mượn</th>
+          <th>Ngày Trả</th>
+          <th>Trạng Thái</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let loan of loans">
+          <td>{{ loan.id }}</td>
+          <td>{{ loan.book.title }}</td>
+          <td>{{ loan.book.author }}</td>
+          <td>{{ loan.loanDate | date : "dd/MM/yyyy" }}</td>
+          <td>{{ loan.returnDate | date : "dd/MM/yyyy" }}</td>
+          <td>{{ loan.isReturned ? "Đã Trả" : "Chưa Trả" }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Hiển thị khi không có khoản mượn -->
+    <ng-template #noLoansTemplate>
+      <p class="no-loans">Bạn chưa mượn sách nào.</p>
+    </ng-template>
+  </div>
+</div>

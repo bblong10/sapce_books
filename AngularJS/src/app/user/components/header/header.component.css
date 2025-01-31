@@ -1,0 +1,145 @@
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 200px;
+    padding: 5px 5px 5px 10px;
+}
+
+/* Menu */
+.menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+.menu li a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: .3s linear;
+}
+
+.menu li a:hover {
+    color: #AB7442;
+}
+
+.navbar .menu li a.active {
+    color: #AB7442;
+}
+
+.menu li a span {
+    position: relative;
+}
+
+.menu span {
+    display: none;
+}
+
+.menu .bi {
+    display: flex;
+    margin-right: 5px;
+}
+
+.account .account-btn {
+    height: 90px;
+    width: 250px;
+    background-color: #AB7442;
+    color: white;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+}
+
+.account .account-btn:hover {
+    background-color: #ca884b;
+}
+
+.icon-dropdown {
+    display: inline-block;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    padding: 3px;
+    transform: rotate(45deg);
+    margin-left: 20px;
+    transition: transform 0.3s ease;
+}
+
+.icon-dropdown.rotate {
+    transform: rotate(225deg);
+}
+
+.account {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    margin-top: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 0px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 250px;
+    padding: 10px 0;
+    opacity: 0;
+}
+
+.dropdown-menu.show {
+    display: block;
+    opacity: 1;
+}
+
+.dropdown-menu .dropdown-item {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    display: block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-menu .dropdown-item i {
+    margin-right: 10px;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #AB7442;
+}
+
+.logout a {
+    display: flex;
+    align-items: center;
+    color: #dc3545;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.logout a:hover {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.logout a i {
+    font-weight: bold;
+    margin-right: 8px;
+}

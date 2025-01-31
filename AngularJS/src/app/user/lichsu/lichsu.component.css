@@ -1,0 +1,53 @@
+.loan-history {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+}
+
+.loan-history h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+.history-container {
+  padding: 20px;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+.history-table th,
+.history-table td {
+  text-align: left;
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+.history-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.history-table td {
+  background-color: #fff;
+}
+
+.history-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.no-loans {
+  text-align: center;
+  font-size: 18px;
+  color: #777;
+  margin-top: 20px;
+}

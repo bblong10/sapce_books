@@ -1,0 +1,91 @@
+<div class="container-fluid">
+  <div class="product-header">
+    <h1>Thêm Sách mới</h1>
+  </div>
+  <hr />
+
+  <div class="newbook-container">
+    <form (ngSubmit)="onSubmit()" #bookForm="ngForm" autocomplete="off">
+      <div class="row">
+        <div class="col">
+          <label for="bookName">Tên sách</label>
+          <input
+            type="text"
+            id="bookName"
+            name="bookName"
+            class="form-control"
+            [(ngModel)]="book.bookName"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div class="col">
+          <label for="bookImage">Ảnh sách</label>
+          <input
+            type="file"
+            id="bookImage"
+            name="bookImage"
+            class="form-control"
+            (change)="onFileSelected($event)"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="bookCategory">Thể loại</label>
+          <select
+            id="bookCategory"
+            name="bookCategory"
+            class="form-control"
+            [(ngModel)]="book.category"
+            required
+          >
+            <option value="">Chọn thể loại</option>
+            <option *ngFor="let category of categories" [value]="category.id">
+              {{ category.name }}
+            </option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="bookQuantity">Số lượng sách</label>
+          <input
+            type="number"
+            id="bookQuantity"
+            name="bookQuantity"
+            class="form-control"
+            [(ngModel)]="book.quantity"
+            required
+            min="1"
+            (input)="validateNumberInput($event)"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="bookDescription">Mô tả</label>
+          <textarea
+            id="bookDescription"
+            name="bookDescription"
+            class="form-control"
+            rows="4"
+            [(ngModel)]="book.description"
+            required
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Nút Thêm Sách -->
+      <button
+        type="submit"
+        class="btn btn-primary mt-3"
+        [disabled]="!bookForm.valid"
+      >
+        Thêm Sách
+      </button>
+    </form>
+  </div>
+</div>

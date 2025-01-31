@@ -1,0 +1,161 @@
+<div class="banner">
+  <div class="slideshow">
+    <img src="banner2.png" alt="Banner 2" />
+  </div>
+  <div class="banner-content">
+    <h1>KHÁM PHÁ THỂ LOẠI SÁCH!</h1>
+    <p>
+      Khám phá ngay kho sách phong phú với đa dạng thể loại, <br />đáp ứng mọi
+      đam mê đọc sách của bạn!
+    </p>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="filters">
+    <div class="filter-item">
+      <div class="category-filters">
+        <div class="filter-btn">
+          <button class="category" (click)="toggleMenu()">
+            <i class="bi bi-funnel"></i> Lọc
+          </button>
+        </div>
+        <div class="category-options" *ngIf="selectedCategories.length === 0">
+          <button
+            *ngFor="let category of categories.slice(0, 10)"
+            (click)="toggleCategory(category.id.toString(), true)"
+            [class.active]="selectedCategories.includes(category)"
+          >
+            {{ category.name }}
+          </button>
+        </div>
+
+        <!-- Menu popup -->
+        <div class="filter-menu" *ngIf="showMenu">
+          <h3>Chọn thể loại:</h3>
+          <div class="category-options">
+            <button
+              *ngFor="let category of categories"
+              (click)="toggleCategory(category.id.toString(), false)"
+              [class.active]="
+                selectedCategories.includes(category.id.toString())
+              "
+            >
+              {{ category.name }}
+            </button>
+          </div>
+          <h3>Sắp xếp theo:</h3>
+          <div class="sort-options">
+            <label>
+              <input
+                type="radio"
+                name="sort"
+                value="newest"
+                [(ngModel)]="selectedSort"
+              />
+              Mới nhất
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="sort"
+                value="asc"
+                [(ngModel)]="selectedSort"
+              />
+              A-Z
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="sort"
+                value="desc"
+                [(ngModel)]="selectedSort"
+              />
+              Z-A
+            </label>
+          </div>
+
+          <div class="menu-actions">
+            <button class="cancel-btn" (click)="cancel()">Hủy</button>
+            <button class="apply-btn" (click)="apply()">Áp dụng</button>
+          </div>
+        </div>
+
+        <div *ngIf="appliedFilters.length > 0" class="selected-filters">
+          <span *ngFor="let filter of selectCategory">
+            {{ filter?.name }}
+            <button class="remove-btn" (click)="removeFilter(filter.id)">
+              <i class="bi bi-x"></i>
+            </button>
+          </span>
+          <button
+            *ngIf="appliedFilters.length > 0"
+            class="clear-all"
+            (click)="clearAll()"
+          >
+            Xóa tất cả
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sort-item">
+      <div class="sort-options">
+        <label class="sort" for="sort">Sắp xếp theo:</label>
+        <div
+          class="sort-option"
+          (click)="setSort('newest')"
+          [class.active]="selectedSort === 'newest'"
+        >
+          Mới nhất
+        </div>
+        <div
+          class="sort-option"
+          (click)="setSort('asc')"
+          [class.active]="selectedSort === 'asc'"
+        >
+          A-Z
+        </div>
+        <div
+          class="sort-option"
+          (click)="setSort('desc')"
+          [class.active]="selectedSort === 'desc'"
+        >
+          Z-A
+        </div>
+      </div>
+
+      <div class="search-container">
+        <button><i class="bi bi-search"></i>Tìm kiếm</button>
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="onSearchChange()"
+          placeholder="Tìm kiếm sách..."
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="product-list">
+    <div *ngFor="let book of filteredBooks" class="book-card">
+      <div class="image-container">
+        <img [src]="book.image" alt="{{ book.title }}" class="book-image" />
+      </div>
+      <div class="book-info">
+        <div class="borrow-detail-button">
+          <button class="buttons" (click)="goToBorrowBook(book)">
+            Mượn sách
+          </button>
+          <button class="buttons" (click)="goToBookDetail(book)">
+            Chi tiết sách
+          </button>
+        </div>
+        <h3 class="book-title">{{ book.title }}</h3>
+        <p class="book-author">{{ book.author }}</p>
+        <p class="book-category">{{ book.category }}</p>
+        <p class="book-status">{{ book.status }}</p>
+      </div>
+    </div>
+  </div>
+</div>

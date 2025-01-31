@@ -1,0 +1,76 @@
+<div class="banner">
+  <div class="slideshow">
+    <img src="banner3.png" alt="Banner 3" />
+  </div>
+  <div class="banner-content">
+    <h1>LIÊN HỆ VỚI CHÚNG TÔI!</h1>
+    <p>
+      <i class="bi bi-geo-alt-fill"></i> Địa chỉ: 331 QL1A, An Phú Đông, Quận
+      12, Hồ Chí Minh, Việt Nam
+    </p>
+    <p><i class="bi bi-telephone-fill"></i> Hotline: 0369 308 320</p>
+    <p>
+      <i class="bi bi-envelope-at-fill"></i> Email: spacebooks&#64;thuvien.com
+    </p>
+  </div>
+</div>
+
+<div class="info">
+  <div class="info-image">
+    <img src="lienhe.png" alt="Liên hệ" />
+  </div>
+  <div class="info-text">
+    <h2>Phiếu Thông Tin</h2>
+    <p>Chúng tôi biết bạn cần gì</p>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <input
+          type="text"
+          id="fullname"
+          formControlName="fullname"
+          placeholder="Họ và Tên"
+          required
+          (input)="validateText($event, 'fullname')"
+        />
+        <input
+          type="text"
+          id="idcard"
+          formControlName="idcard"
+          placeholder="Căn Cước Công Dân"
+          required
+          (input)="validateNumber($event, 'idcard')"
+        />
+      </div>
+      <div class="row">
+        <input
+          type="text"
+          id="phone"
+          formControlName="phone"
+          placeholder="Số Điện Thoại"
+          required
+          (input)="validateNumber($event, 'phone')"
+        />
+        <select id="service" formControlName="service" required>
+          <option value="">-- Chọn dịch vụ --</option>
+          <option value="service1">Đăng ký mượn sách</option>
+          <option value="service2">Gia hạn mượn sách</option>
+          <option value="service3">Tư vấn tài liệu sách</option>
+          <option value="service4">Mất sách/tài liệu</option>
+          <option value="service5">Đề xuất tài liệu mới</option>
+          <option value="service6">Giải quyết lỗi hệ thống</option>
+        </select>
+      </div>
+      <textarea
+        id="description"
+        formControlName="description"
+        rows="5"
+        placeholder="Mô tả chi tiết"
+        required
+      ></textarea>
+      <button type="submit" [disabled]="userForm.invalid">GỬI</button>
+      <div *ngIf="userForm.invalid && userForm.touched" class="form-error">
+        Vui lòng điền đầy đủ thông tin!
+      </div>
+    </form>
+  </div>
+</div>

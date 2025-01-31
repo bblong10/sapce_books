@@ -1,0 +1,39 @@
+<div class="logo">
+  <img src="logo.png" alt="logo" />
+</div>
+
+<div class="admin" (click)="toggleDropdown(); toggleClick()" [class.clicked]="isClicked">
+  <i class="bi bi-person-circle"></i>
+  <strong>{{ adminName }}</strong>
+
+  <ul class="dropdown-menu" [class.show]="isDropdownOpen">
+    <li><a href="#" class="dropdown-item">Thông tin tài khoản</a></li>
+    <div (click)="logout()" class="logout">
+      <a><i class="bi bi-box-arrow-right"></i>Đăng xuất</a>
+    </div>
+  </ul>
+</div>
+
+<ul class="menu">
+  <li>
+    <a routerLink="/thongke" routerLinkActive="active"><span></span><i class="bi bi-graph-up"></i>Thống kê</a>
+  </li>
+  <li>
+    <a routerLink="/qlsanpham/sach" routerLinkActive="active"><span></span><i class="bi bi-book"></i>Quản lý sách</a>
+  </li>
+  <li>
+    <a routerLink="/qlsanpham/theloai" routerLinkActive="active"><span></span><i class="bi bi-menu-button"></i>Quản lý thể loại</a>
+  </li>
+  <li>
+    <a routerLink="/qlmuontra" routerLinkActive="active"><span></span><i class="bi bi-repeat"></i>Quản lý mượn trả</a>
+  </li>
+  <li>
+    <a routerLink="/qlnguoidung/khachhang" routerLinkActive="active"><span></span><i class="bi bi-people"></i>Quản lý khách hàng</a>
+  </li>
+  <li>
+    <a routerLink="/qlnguoidung/nhanvien" routerLinkActive="active"><span></span><i class="bi bi-people"></i>Quản lý nhân viên</a>
+  </li>
+  <li>
+    <a routerLink="/qllienhe" routerLinkActive="active"><span></span><i class="bi bi-telephone"></i>Quản lý liên hệ</a>
+  </li>
+</ul>

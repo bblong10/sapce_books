@@ -1,0 +1,77 @@
+<div class="container-fluid" *ngIf="!isLoading; else loadingTemplate">
+  <div class="vote">
+    <div class="vote-image">
+      <img
+        [src]="'http://localhost:8000/api/v1/books/image/' + bookDetails?.image"
+        alt="Ảnh sách"
+      />
+    </div>
+    <div class="vote-text">
+      <h2>Lập phiếu mượn</h2>
+      <!-- Hiển thị thông tin sách -->
+      <div class="book-info">
+        <p><strong>Tên sách:</strong> {{ bookDetails?.title }}</p>
+        <p><strong>Tác giả:</strong> {{ bookDetails?.author }}</p>
+        <p><strong>Nhà xuất bản:</strong> {{ bookDetails?.publisher }}</p>
+        <p>
+          <strong>Ngày xuất bản:</strong>
+          {{ bookDetails?.publishDate | date : "dd/MM/yyyy" }}
+        </p>
+        <p><strong>Số lượng có sẵn:</strong> {{ bookDetails?.quantity }}</p>
+      </div>
+
+      <!-- Hiển thị thông tin người dùng -->
+      <div class="user-info">
+        <p><strong>Họ và tên:</strong> {{ userData?.fullName }}</p>
+        <p><strong>Email:</strong> {{ userData?.email }}</p>
+        <p><strong>Địa chỉ:</strong> {{ userData?.address }}</p>
+        <p>
+          <strong>Ngày sinh:</strong> {{ userData?.dob | date : "dd/MM/yyyy" }}
+        </p>
+      </div>
+
+      <!-- Form chỉ chứa Ngày mượn và Ngày trả -->
+      <form
+        [formGroup]="borrowForm"
+        (ngSubmit)="onSubmit()"
+        class="borrow-form"
+      >
+        <div class="row">
+          <div class="field">
+            <label for="borrowDate">Ngày mượn:</label>
+            <input
+              type="date"
+              id="borrowDate"
+              formControlName="borrowDate"
+              required
+              autocomplete="off"
+            />
+          </div>
+          <div class="field">
+            <label for="returnDate">Ngày trả:</label>
+            <input
+              type="date"
+              id="returnDate"
+              formControlName="returnDate"
+              required
+              autocomplete="off"
+            />
+          </div>
+        </div>
+        <button
+          type="submit"
+          style="margin-top: 30px"
+          [disabled]="borrowForm.invalid"
+        >
+          Đăng ký mượn sách
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadingTemplate>
+  <div class="loading">
+    <p>Đang tải thông tin sách...</p>
+  </div>
+</ng-template>

@@ -1,0 +1,267 @@
+.container-fluid {
+    width: 98%;
+    height: 85.8%;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.employee-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.employee-header h1 {
+    margin: 0;
+}
+
+.employee-header button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.employee-header button:hover {
+    background-color: #0056b3;
+}
+
+.search-container {
+    position: relative;
+    width: 50%;
+    padding: 0px 15px;
+    border-radius: 10px;
+    border: 1px solid #5E6E82;
+    margin-bottom: 20px;
+}
+
+.search-container .bi {
+    color: #5E6E82;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.search-container input {
+    width: 90%;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0px 10px;
+    color: black;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px;
+}
+
+.employee-table-container {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.employee-table th,
+.employee-table td {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    vertical-align: middle;
+}
+
+.employee-table thead tr {
+    background-color: black;
+    color: white;
+}
+
+.employee-table tbody tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+.status.active {
+    color: green;
+    font-weight: bold;
+}
+
+.status.inactive {
+    color: red;
+    font-weight: bold;
+}
+
+/* Cột ID */
+.employee-table th:nth-child(1),
+.employee-table td:nth-child(1) {
+    width: 15%;
+}
+
+/* Cột Tên nhân viên */
+.employee-table th:nth-child(2),
+.employee-table td:nth-child(2) {
+    width: 20%;
+}
+
+/* Cột Email */
+.employee-table th:nth-child(3),
+.employee-table td:nth-child(3) {
+    width: 20%;
+}
+
+/* Cột Số điện thoại */
+.employee-table th:nth-child(4),
+.employee-table td:nth-child(4) {
+    width: 15%;
+}
+
+/* Cột Trạng thái */
+.employee-table th:nth-child(5),
+.employee-table td:nth-child(5) {
+    width: 15%;
+}
+
+/* Cột Thao tác */
+.employee-table th:nth-child(6),
+.employee-table td:nth-child(6) {
+    width: 15%;
+}
+
+.edit-btn,
+.delete-btn,
+.lock-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.edit-btn {
+    background-color: #17a2b8;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+}
+
+.lock-btn {
+    background-color: #d1dc35;
+}
+
+.edit-btn:hover {
+    background-color: #138496;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.lock-btn:hover {
+    background-color: #b7c823;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 5px;
+}
+
+.pagination button {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    color: #495057;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination button:hover {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+}
+
+.pagination button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination button:disabled {
+    background-color: #e9ecef;
+    color: #adb5bd;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+}
+
+.employee-table-container .pagination {
+    margin-top: auto;
+}
+
+/* Modal */
+.modal {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+  }
+  
+  .close {
+    border: none;
+    background: none;
+    font-size: 25px;
+    color: #495057;
+  }
+  
+  .close:hover {
+    color: red;
+  }
+  
+  h5 {
+    font-size: 30px;
+  }
+  
+  .modal.show {
+    display: flex;
+  }
+  
+  .modal-dialog {
+    max-width: 500px;
+    margin: 50px auto;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  

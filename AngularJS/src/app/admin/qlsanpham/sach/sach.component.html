@@ -1,0 +1,123 @@
+<div class="container-fluid">
+  <!-- Modal for Editing Book -->
+  <div class="modal" tabindex="-1" role="dialog" *ngIf="isModalVisible">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Sửa Sách</h5>
+          <button type="button" class="close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="updateBook()" class="form" #editForm="ngForm" autocomplete="off">
+            <div class="form-group">
+              <label for="editBookTitle">Tên sách</label>
+              <input type="text" id="editBookTitle" class="form-control" [(ngModel)]="editBook.title" name="editBookTitle" required />
+            </div>
+            <div class="form-group">
+              <label for="editBookAuthor">Tác giả</label>
+              <input type="text" id="editBookAuthor" class="form-control" [(ngModel)]="editBook.author" name="editBookAuthor" required />
+            </div>
+            <div class="form-group">
+              <label for="editBookQuantity">Số lượng</label>
+              <input type="number" id="editBookQuantity" class="form-control" [(ngModel)]="editBook.quantity" name="editBookQuantity" required />
+            </div>
+            <div class="form-group">
+              <label for="editBookPublisher">Nhà xuất bản</label>
+              <input type="text" id="editBookPublisher" class="form-control" [(ngModel)]="editBook.publisher" name="editBookPublisher" required />
+            </div>
+            <div class="form-row">
+              <div class="form-group col">
+                <label for="editBookCategory">Danh mục</label>
+                <select id="editBookCategory" class="form-control" [(ngModel)]="editBook.categoryId" name="editBookCategory" required>
+                  <option *ngFor="let category of categories" [value]="category.id">
+                    {{ category.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="form-group col">
+                <label for="editBookPublishDate">Ngày xuất bản</label>
+                <input type="date" id="editBookPublishDate" class="form-control" [(ngModel)]="editBook.publishDate" name="editBookPublishDate" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="editBookImage">Ảnh sách</label>
+              <input type="file" id="editBookImage" class="form-control" (change)="onFileSelected($event)" />
+              <div style="margin-top: 20px" *ngIf="editBook.image">
+                <label>Ảnh hiện tại: </label>
+                <img style="margin-left: 10px" [src]="'http://localhost:8000/api/v1/books/image/' + editBook.image" alt="Current Book Image" width="100" height="130" />
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Cập nhật</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-header">
+    <h1>Quản lý sách</h1>
+    <button (click)="navigateToAddBook()">Thêm sách</button>
+  </div>
+  <hr />
+
+  <div class="search-container">
+    <i class="bi bi-search"></i>
+    <input type="text" placeholder="Tìm kiếm sách" [(ngModel)]="searchTerm" (keydown.enter)="filterBooks()" />
+  </div>
+
+  <div class="product-table-container">
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tên sách</th>
+          <th>Hình ảnh</th>
+          <th>Danh mục</th>
+          <th>Số lượng</th>
+          <th>Trạng thái</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of paginatedData">
+          <td>{{ row.id }}</td>
+          <td>{{ row.title }}</td>
+          <td>
+            <img [src]="'http://localhost:8000/api/v1/books/image/' + row.image" [alt]="row.title" width="70" height="90" />
+          </td>
+          <td>{{ row.categoryId }}</td>
+          <td>{{ row.quantity }}</td>
+          <td class="status" [class.active]="row.isAvailable" [class.inactive]="!row.isAvailable">
+            {{ row.isAvailable ? "Hiển thị" : "Không hiển thị" }}
+          </td>
+          <td>
+            <button class="edit-btn" (click)="openEditModal(row)">Sửa</button>
+            <button class="delete-btn" (click)="deleteBook(row.id)">Xóa</button>
+            <button class="lock-btn" (click)="toggleStatus(row)">
+              {{ row.isAvailable ? "Khóa" : "Đã khóa" }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+        <i class="bi bi-caret-left"></i>
+      </button>
+      <ng-container *ngFor="let page of visiblePages">
+        <button *ngIf="page !== '...'; else dots" [class.active]="page === currentPage" (click)="changePage(page)">
+          {{ page }}
+        </button>
+        <ng-template #dots>
+          <span>...</span>
+        </ng-template>
+      </ng-container>
+      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+        <i class="bi bi-caret-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

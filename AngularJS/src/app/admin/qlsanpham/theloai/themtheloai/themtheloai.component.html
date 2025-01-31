@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="product-header">
+        <h1>Thêm Thể loại mới</h1>
+    </div>
+    <hr>
+
+    <div class="category-container">
+        <form (ngSubmit)="onSubmit()" #categoryForm="ngForm" autocomplete="off">
+            <label for="newCategory">Thể Loại Mới</label>
+            <input type="text" id="newCategory" name="newCategory" class="form-control" [(ngModel)]="newCategory" placeholder="Nhập thể loại" autocomplete="off" required/>
+            <!-- Nút Thêm Thể loại -->
+            <button type="submit" class="btn btn-primary mt-3" [disabled]="!categoryForm.valid">Thêm Thể loại</button>
+        </form>
+    </div>
+</div>

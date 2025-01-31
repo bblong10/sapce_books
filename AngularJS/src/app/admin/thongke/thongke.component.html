@@ -1,0 +1,115 @@
+<div class="container-fluid">
+  <div class="header">
+    <h1>Thống kê</h1>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="col-4">
+      <div class="stat-box stat-box-1">
+        <div class="text">
+          <h4>Tổng số sách</h4>
+          <p>{{ totalBooks }} Sách</p>
+        </div>
+        <div class="icon"><i class="bi bi-journal-bookmark-fill"></i></div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="stat-box stat-box-2">
+        <div class="text">
+          <h4>Tổng số thể loại</h4>
+          <p>{{ totalCategories }} Thể loại</p>
+        </div>
+        <div class="icon"><i class="bi bi-menu-button-fill"></i></div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="stat-box stat-box-3">
+        <div class="text">
+          <h4>Số sách mượn</h4>
+          <p>{{ totalLoans }} Sách đang mượn</p>
+        </div>
+        <div class="icon"><i class="bi bi-journal-check"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Biểu đồ -->
+  <div class="row mt-4">
+    <div class="chart-bar">
+      <h4>Số lượng sách mượn</h4>
+      <canvas id="barChart"></canvas>
+    </div>
+    <div class="chart-pie">
+      <h4>Sách đã trả/chưa trả</h4>
+      <canvas id="pieChart"></canvas>
+    </div>
+  </div>
+
+    <div class="row mt-5">
+      <h4>Danh sách các sách hết hạn mượn</h4>
+      <table class="table-striped">
+        <thead>
+          <tr>
+            <th>Tên sách</th>
+            <th>Người mượn</th>
+            <th>Ngày hết hạn</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of paginatedData">
+            <td>{{ book.name }}</td>
+            <td>{{ book.borrower }}</td>
+            <td>{{ book.dueDate | date : "dd/MM/yyyy" }}</td>
+            <td>
+              <button
+                class="btn btn-warning btn-sm"
+                (click)="sendReminder(book)"
+              >
+                Nhắc nhở
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="expiringBooks.length === 0">
+            <td colspan="4" class="text-center">Không có sách nào hết hạn</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pagination">
+        <button
+          (click)="changePage(currentPage - 1)"
+          [disabled]="currentPage === 1"
+        >
+          <i class="bi bi-caret-left"></i>
+        </button>
+
+        <ng-container
+          *ngFor="
+            let page of paginationService.getVisiblePages(
+              currentPage,
+              totalPages
+            )
+          "
+        >
+          <button
+            *ngIf="page !== '...'; else dots"
+            [class.active]="page === currentPage"
+            (click)="changePage(page)"
+          >
+            {{ page }}
+          </button>
+          <ng-template #dots>
+            <span>...</span>
+          </ng-template>
+        </ng-container>
+
+        <button
+          (click)="changePage(currentPage + 1)"
+          [disabled]="currentPage === totalPages"
+        >
+          <i class="bi bi-caret-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>

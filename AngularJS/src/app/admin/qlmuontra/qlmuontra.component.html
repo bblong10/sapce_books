@@ -1,0 +1,145 @@
+<div class="container-fluid">
+  <div class="borrow-return-header">
+    <h1>Quản lý Mượn Trả Sách</h1>
+  </div>
+  <hr />
+  <div class="search-container">
+    <i class="bi bi-search"></i>
+    <input
+      type="text"
+      placeholder="Tìm kiếm mượn trả"
+      [(ngModel)]="searchTerm"
+      (keydown.enter)="filterBooks()"
+    />
+  </div>
+
+  <div class="borrow-return-table-container">
+    <!-- Bảng quản lý mượn trả -->
+    <table class="borrow-return-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tên khách hàng</th>
+          <th>Sách</th>
+          <th>Ngày mượn</th>
+          <th>Ngày trả</th>
+          <th>Trạng thái</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of paginatedData">
+          <td>{{ row.id }}</td>
+          <td>{{ row.name }}</td>
+          <td>{{ row.book }}</td>
+          <td>{{ row.loanDate }}</td>
+          <td>{{ row.returnDate }}</td>
+          <td>
+            <span
+              class="badge"
+              [ngClass]="row.isReturned ? 'success' : 'danger'"
+            >
+              {{ row.isReturned ? "Đã trả" : "Chưa trả" }}
+            </span>
+          </td>
+          <td>
+            <button class="edit-btn btn-sm btn-warning" (click)="openEditModal(row)">
+              Sửa
+            </button>
+            <button class="delete-btn btn-sm btn-danger" (click)="deleteLoan(row.id)">
+              Xóa
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Phân trang -->
+    <div class="pagination">
+      <button
+        (click)="changePage(currentPage - 1)"
+        [disabled]="currentPage === 1"
+      >
+        <i class="bi bi-caret-left"></i>
+      </button>
+
+      <ng-container *ngFor="let page of visiblePages">
+        <button
+          *ngIf="page !== '...'; else dots"
+          [class.active]="page === currentPage"
+          (click)="changePage(page)"
+        >
+          {{ page }}
+        </button>
+        <ng-template #dots>
+          <span>...</span>
+        </ng-template>
+      </ng-container>
+
+      <button
+        (click)="changePage(currentPage + 1)"
+        [disabled]="currentPage === totalPages"
+      >
+        <i class="bi bi-caret-right"></i>
+      </button>
+    </div>
+
+    <!-- Modal sửa thông tin -->
+    <div
+      class="modal"
+      tabindex="-1"
+      *ngIf="isModalOpen"
+      style="background: rgba(0, 0, 0, 0.5)"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Sửa Thông Tin Mượn Trả</h5>
+            <button type="button" class="close" (click)="closeModal()">
+              <i class="bi bi-x"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="loanDate" class="form-label">Ngày Mượn</label>
+              <input
+                type="date"
+                id="loanDate"
+                class="form-control"
+                [(ngModel)]="selectedLoan.loanDate"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="returnDate" class="form-label">Ngày Trả</label>
+              <input
+                type="date"
+                id="returnDate"
+                class="form-control"
+                [(ngModel)]="selectedLoan.returnDate"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="isReturned" class="form-label">Trạng Thái</label>
+              <select
+                id="isReturned"
+                class="form-control"
+                [(ngModel)]="selectedLoan.isReturned"
+              >
+                <option [value]="true">Đã trả</option>
+                <option [value]="false">Chưa trả</option>
+              </select>
+            </div>
+          </div>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              (click)="updateLoan()"
+            >
+              Cập nhật
+            </button>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

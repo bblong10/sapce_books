@@ -1,0 +1,140 @@
+<div class="container-fluid">
+  <div
+    class="modal"
+    tabindex="-1"
+    *ngIf="isModalOpen"
+    style="background: rgba(0, 0, 0, 0.5)"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Sửa Thông Tin Nhân Viên</h5>
+          <button type="button" class="close" (click)="closeModal()">
+            <i class="bi bi-x"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="name" class="form-label">Họ Tên</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              [(ngModel)]="selectedEmployee.name"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              [(ngModel)]="selectedEmployee.email"
+            />
+          </div>
+        
+          <div class="mb-3">
+            <label for="isAtive" class="form-label">Trạng Thái</label>
+            <select
+              id="isAtive"
+              class="form-control"
+              [(ngModel)]="selectedEmployee.isAtive"
+            >
+              <option [value]="true">Đang làm</option>
+              <option [value]="false">Nghỉ việc</option>
+            </select>
+          </div>
+        </div>
+
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="updateEmployee()"
+          >
+            Lưu
+          </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="employee-header">
+    <h1>Quản lý nhân viên</h1>
+    <button (click)="navigateToAddEmployee()">Thêm nhân viên</button>
+  </div>
+  <hr />
+  <div class="search-container">
+    <i class="bi bi-search"></i>
+    <input
+      type="text"
+      placeholder="Tìm kiếm nhân viên"
+      [(ngModel)]="searchTerm"
+      (keydown.enter)="filterBooks()"
+    />
+  </div>
+  <div class="employee-table-container">
+    <table class="employee-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tên nhân viên</th>
+          <th>Email</th>
+          <th>Số điện thoại</th>
+          <th>Trạng thái</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of paginatedData">
+          <td>{{ row.id }}</td>
+          <td>{{ row.name }}</td>
+          <td>{{ row.email }}</td>
+          <td>{{ row.phone }}</td>
+          <td
+            class="status"
+            [class.active]="row.status === 'Đang làm'"
+            [class.inactive]="row.status === 'Nghỉ việc'"
+          >
+            {{ row.status }}
+          </td>
+          <td>
+            <button class="edit-btn" (click)="openEditModal(row)">Sửa</button>
+            <!-- <button class="delete-btn">Xóa</button> -->
+            <button class="lock-btn" (click)="toggleLock(row)">
+              {{ row.status === "Nghỉ việc" ? "Đã khóa" : "Khóa" }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Phân trang -->
+    <div class="pagination">
+      <button
+        (click)="changePage(currentPage - 1)"
+        [disabled]="currentPage === 1"
+      >
+        <i class="bi bi-caret-left"></i>
+      </button>
+
+      <ng-container *ngFor="let page of visiblePages">
+        <button
+          *ngIf="page !== '...'; else dots"
+          [class.active]="page === currentPage"
+          (click)="changePage(page)"
+        >
+          {{ page }}
+        </button>
+        <ng-template #dots>
+          <span>...</span>
+        </ng-template>
+      </ng-container>
+
+      <button
+        (click)="changePage(currentPage + 1)"
+        [disabled]="currentPage === totalPages"
+      >
+        <i class="bi bi-caret-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

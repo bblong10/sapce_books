@@ -1,0 +1,186 @@
+.banner {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    color: white;
+    z-index: 2;
+}
+
+.banner-content h1 {
+    font-size: 50px;
+    margin: 10px 0;
+    font-weight: 700;
+    background: linear-gradient(45deg, #ffffff 0%, #ab7742 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 400% 400%;
+    animation: animationName 5s ease infinite;
+}
+
+@keyframes animationName {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.banner-content p {
+    font-size: 25px;
+    color: white;
+    margin: 20px 0;
+    max-width: 1000px;
+    line-height: 1.5;
+}
+
+.banner-content i {
+    color: #AB7442;
+}
+
+.info {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background: #f0f0f0;
+    margin-bottom: 50px;
+}
+
+.info-image {
+    flex: 0 0 50%;
+}
+
+.info-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.info-text {
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    padding: 0px 30px;
+}
+
+.info-text h2 {
+    font-size: 50px;
+    margin-bottom: 10px;
+    color: #AB7442;
+    font-weight: 700;
+}
+
+.info-text p {
+    width: 100%;
+    font-size: 20px;
+    color: black;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+form {
+    width: 100%;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+    width: 100%;
+    background-color: #AB7442;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #ca8c51;
+    transition: background-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    outline: none; /* Loại bỏ outline mặc định */
+    border-color: #8A5E34; /* Màu viền khi focus */
+    box-shadow: 0 0 5px rgba(138, 94, 52, 0.6); /* Thêm hiệu ứng shadow để làm nổi bật */
+    transition: all 0.3s ease; /* Thêm hiệu ứng mượt khi chuyển đổi */
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.row input,
+.row select {
+    flex: 1;
+    margin-right: 12px;
+    margin-left: 12px;
+    padding: 10px;
+}
+
+.form-error {
+    color: red;
+    padding: 10px;
+    font-weight: 700;
+}
+

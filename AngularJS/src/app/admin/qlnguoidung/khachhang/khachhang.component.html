@@ -1,0 +1,83 @@
+<div class="container-fluid">
+  <div class="customer-header">
+    <h1>Quản lý khách hàng</h1>
+  </div>
+  <hr />
+  <div class="search-container">
+    <i class="bi bi-search"></i>
+    <input
+      type="text"
+      placeholder="Tìm kiếm khách hàng"
+      [(ngModel)]="searchTerm"
+      (keydown.enter)="filterUsers()"
+    />
+  </div>
+
+  <div class="customer-table-container">
+    <table class="customer-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Họ tên</th>
+          <th>Email</th>
+          <th>Ngày sinh</th>
+          <th>Địa chỉ</th>
+          <th>Trạng thái</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of paginatedData">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.dob }}</td>
+          <td>{{ user.address }}</td>
+          <td>
+            <span
+              class="badge"
+              [ngClass]="user.isAtive === 'Mở' ? 'bsuccess' : 'danger'"
+            >
+              {{ user.isAtive }}
+            </span>
+          </td>
+          <td>
+            <button class="lock-btn btn-sm btn-warning" (click)="toggleLock(user)">
+              {{ user.isAtive === "Mở" ? "Khóa" : "Mở" }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Phân trang -->
+    <div class="pagination">
+      <button
+        (click)="changePage(currentPage - 1)"
+        [disabled]="currentPage === 1"
+      >
+        <i class="bi bi-caret-left"></i>
+      </button>
+
+      <ng-container *ngFor="let page of visiblePages">
+        <button
+          *ngIf="page !== '...'; else dots"
+          [class.active]="page === currentPage"
+          (click)="changePage(page)"
+        >
+          {{ page }}
+        </button>
+        <ng-template #dots>
+          <span>...</span>
+        </ng-template>
+      </ng-container>
+
+      <button
+        (click)="changePage(currentPage + 1)"
+        [disabled]="currentPage === totalPages"
+      >
+        <i class="bi bi-caret-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

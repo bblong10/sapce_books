@@ -1,0 +1,98 @@
+.container-fluid {
+    width: 90%;
+}
+
+.vote {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.vote .vote-image {
+    flex: 0 0 30%;
+}
+
+.vote .vote-image img {
+    width: 100%;
+    height: 700px;
+    
+}
+
+.vote .vote-text {
+    flex: 0 0 70%;
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+
+.vote .vote-text h2 {
+    font-size: 50px;
+    margin-bottom: 10px;
+    color: #AB7442;
+    font-weight: 700;
+}
+
+.borrow-form .row {
+    display: flex;
+}
+
+.borrow-form .field {
+    flex: 1;
+}
+
+.borrow-form label {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.borrow-form input, 
+.borrow-form textarea, 
+.borrow-form button {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+}
+
+.borrow-form textarea {
+    resize: vertical;
+}
+
+.borrow-form button {
+    background-color: #AB7442;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.borrow-form button:hover {
+    background-color: #ca884b;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Khoảng cách giữa checkbox và dòng chữ */
+    font-weight: normal; /* Để dòng chữ không quá đậm nếu không cần */
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin: 0; /* Loại bỏ khoảng cách mặc định của checkbox */
+    width: 16px;
+    height: 16px; /* Tùy chỉnh kích thước checkbox nếu cần */
+}
+
+.borrow-form input:focus, 
+.borrow-form textarea:focus {
+    outline: none; /* Loại bỏ outline mặc định */
+    border-color: #8A5E34; /* Màu viền khi focus */
+    box-shadow: 0 0 5px rgba(138, 94, 52, 0.6); /* Thêm hiệu ứng shadow để làm nổi bật */
+    transition: all 0.3s ease; /* Thêm hiệu ứng mượt khi chuyển đổi */
+}

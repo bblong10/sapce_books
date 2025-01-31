@@ -1,0 +1,79 @@
+<div class="container-fluid">
+  <div class="contact-header">
+    <h1>Quản lý Liên Hệ</h1>
+  </div>
+  <hr />
+  <div class="search-container">
+    <i class="bi bi-search"></i>
+    <input
+      type="text"
+      placeholder="Tìm kiếm liên hệ"
+      [(ngModel)]="searchTerm"
+      (keydown.enter)="filterContacts()"
+    />
+  </div>
+  <div class="contact-table-container">
+    <table class="contact-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Họ tên</th>
+          <th>Số điện thoại</th>
+          <th>Nội dung</th>
+          <th>Trạng thái</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of paginatedData">
+          <td>{{ row.id }}</td>
+          <td>{{ row.name }}</td>
+          <td>{{ row.phone }}</td>
+          <td>{{ row.content }}</td>
+          <td
+            class="status"
+            [class.active]="row.status === 'Giải quyết'"
+            [class.inactive]="row.status === 'Chưa giải quyết'"
+          >
+            {{ row.status }}
+          </td>
+          <td>
+            <button class="confirm-btn" (click)="confirmStatus(row)">
+              {{ row.status === "Giải quyết" ? "Đã xác nhận" : "Xác nhận" }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Phân trang -->
+    <div class="pagination">
+      <button
+        (click)="changePage(currentPage - 1)"
+        [disabled]="currentPage === 1"
+      >
+        <i class="bi bi-caret-left"></i>
+      </button>
+
+      <ng-container *ngFor="let page of visiblePages">
+        <button
+          *ngIf="page !== '...'; else dots"
+          [class.active]="page === currentPage"
+          (click)="changePage(page)"
+        >
+          {{ page }}
+        </button>
+        <ng-template #dots>
+          <span>...</span>
+        </ng-template>
+      </ng-container>
+
+      <button
+        (click)="changePage(currentPage + 1)"
+        [disabled]="currentPage === totalPages"
+      >
+        <i class="bi bi-caret-right"></i>
+      </button>
+    </div>
+  </div>
+</div>

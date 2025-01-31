@@ -1,0 +1,107 @@
+<div class="container-fluid">
+  <div class="category-header">
+    <h1>Quản lý thể loại</h1>
+    <button (click)="navigateToAddCategory()">Thêm thể loại</button>
+  </div>
+  <hr />
+  <div class="search-container">
+    <i class="bi bi-search"></i>
+    <input
+      type="text"
+      placeholder="Tìm kiếm thể loại"
+      [(ngModel)]="searchTerm"
+      (keydown.enter)="filterBooks()"
+    />
+  </div>
+  <div class="category-table-container">
+    <table class="category-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tên thể loại</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of paginatedData">
+          <td>{{ row.id }}</td>
+          <td>{{ row.name }}</td>
+          <td>
+            <button class="edit-btn" (click)="openEditCategoryModal(row)">
+              Sửa
+            </button>
+            <button class="delete-btn" (click)="delete(row.id)">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Phân trang -->
+    <div class="pagination">
+      <button
+        (click)="changePage(currentPage - 1)"
+        [disabled]="currentPage === 1"
+      >
+        <i class="bi bi-caret-left"></i>
+      </button>
+
+      <ng-container *ngFor="let page of visiblePages">
+        <button
+          *ngIf="page !== '...'; else dots"
+          [class.active]="page === currentPage"
+          (click)="changePage(page)"
+        >
+          {{ page }}
+        </button>
+        <ng-template #dots>
+          <span>...</span>
+        </ng-template>
+      </ng-container>
+
+      <button
+        (click)="changePage(currentPage + 1)"
+        [disabled]="currentPage === totalPages"
+      >
+        <i class="bi bi-caret-right"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Sửa Thể Loại -->
+<div
+  class="modal"
+  tabindex="-1"
+  *ngIf="selectedCategory"
+  style="display: block"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Sửa Thể Loại</h5>
+        <button type="button" class="close" (click)="selectedCategory = null">
+          <i class="bi bi-x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="categoryName">Tên thể loại mới:</label>
+        <input
+          type="text"
+          id="categoryName"
+          [(ngModel)]="updatedCategoryName"
+          class="form-control"
+          required
+        />
+      </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+          (click)="updateCategory()"
+        >
+          Cập nhật
+        </button>
+      
+    </div>
+  </div>
+</div>

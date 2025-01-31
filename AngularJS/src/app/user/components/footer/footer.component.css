@@ -1,0 +1,142 @@
+.footer {
+    color: white;
+    padding: 30px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0px 100px;
+}
+
+.footer-section {
+    flex: 1 1 200px;
+    min-width: 200px;
+}
+
+.footer-section h1 {
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: white;
+    text-align: left;
+}
+
+.footer-section p {
+    line-height: 1;
+    font-size: 18px;
+    text-align: left;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    font-size: 18px;
+    line-height: 2;
+    text-align: left;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s, letter-spacing 0.3s, transform 0.3s;
+}
+
+.footer-section ul li a i {
+    margin-right: 5px;
+}
+
+.footer-section ul li a:hover,
+.footer-section ul li a:focus {
+    color: #AB7442;
+    letter-spacing: 2px;
+    transform: scale(1.1);
+}
+
+.social-icons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    padding: 5px 10px;
+    border: 3px solid white;
+    border-radius: 5px;
+    transition: color 0.3s ease;
+}
+
+
+.social-icons a:hover {
+    border: 3px solid #AB7442;
+    color: #AB7442;
+}
+
+.newsletter {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    border: 1px solid white;
+    background: white;
+    padding: 10px 15px;
+}
+
+.newsletter input {
+    flex: 1;
+    padding: 10px;
+    font-size: 15px;
+    border: none;
+    background: none;
+}
+
+.newsletter input:focus {
+    outline: none;
+}
+
+.newsletter button {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    background-color: #f1c40f;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.newsletter button:hover {
+    background-color: #d4ac0d;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 15px;
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-bottom a {
+    color: #f1c40f;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-bottom a:hover {
+    color: #d4ac0d;
+}
+
+strong {
+    color: #d4ac0d;
+}

@@ -1,0 +1,33 @@
+.footer {
+    background: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer hr {
+    border: 0;
+    border-top: 1px solid #4d4d4d;
+    margin: 10px 0;
+}
+
+.footer-bottom {
+    margin: 20px 30px 9px 30px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer p {
+    margin: 5px 0;
+    font-weight: 500;
+    font-size: 15px;
+    color: black;
+}
+
+.footer strong {
+    font-size: 15px;
+    color: #007bff;
+}

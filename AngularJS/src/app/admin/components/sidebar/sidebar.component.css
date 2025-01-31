@@ -1,0 +1,140 @@
+/* Logo */
+.logo img {
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+    padding: 20px 10px 20px 10px;
+    filter: drop-shadow(0 10px 10px #868B92);
+}
+
+/* Menu */
+.menu {
+    list-style-type: none;
+    position: relative;
+    width: 90%;
+    padding: 20px 0px 0px 20px;
+    margin: 0;
+}
+
+.menu li a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px;
+    color: #5E6E82;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: .1s linear;
+}
+
+.menu li a:hover {
+    color: black;
+    background: #eeeeee;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.menu li a.active {
+    color: black;
+    background: #eeeeee;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.menu li a span {
+    position: relative;
+    margin-right: 35px;
+}
+
+.menu span {
+    display: none;
+}
+
+.menu .bi {
+    display: flex;
+    margin-right: 20px;
+}
+
+/* Admin */
+.admin {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    background: #eeeeee;
+}
+
+.admin:hover {
+    background: #dfdfdf;
+}
+
+.admin.clicked {
+    background: #dfdfdf;
+}
+
+.admin .bi.bi-person-circle {
+    font-size: 50px;
+    margin: 0px 20px;
+}
+
+.admin strong {
+    font-size: 20px;
+    color: black;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: -1px;
+    left: 105%;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1050;
+    width: 200px;
+    padding: 10px 0;
+    opacity: 0;
+}
+
+.dropdown-menu.show {
+    display: block;
+    opacity: 1;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #5E6E82;
+    display: block;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: black;
+}
+
+.logout a {
+    display: flex;
+    align-items: center;
+    color: #dc3545;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.logout a:hover {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.logout a i {
+    font-weight: bold;
+    margin-right: 8px;
+}

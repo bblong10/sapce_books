@@ -1,0 +1,37 @@
+<nav class="navbar">
+  <div class="logo">
+    <img src="logo.png" alt="logo" />
+  </div>
+  <ul class="menu">
+    <li>
+      <a routerLink="/trangchu" routerLinkActive="active"
+        ><span></span><i class="bi bi-house-door"></i>TRANG CHỦ</a
+      >
+    </li>
+    <li>
+      <a routerLink="/theloai" routerLinkActive="active"
+        ><span></span><i class="bi bi-menu-button"></i>THỂ LOẠI</a
+      >
+    </li>
+    <li>
+      <a routerLink="/lienhe" routerLinkActive="active"
+        ><span></span><i class="bi bi-telephone-inbound"></i>LIÊN HỆ</a
+      >
+    </li>
+  </ul>
+  <div class="account" (click)="toggleDropdown()">
+    <button class="btn account-btn">
+      TÀI KHOẢN <i class="icon-dropdown" [class.rotate]="isDropdownOpen"></i>
+    </button>
+    <ul class="dropdown-menu show" [class.show]="isDropdownOpen">
+      <li>
+        <a href="/thongtincanhan" class="dropdown-item">Thông tin tài khoản</a>
+      </li>
+      <li><a href="/lichsu" class="dropdown-item">Lịch Sử</a></li>
+      <hr />
+      <div (click)="logout()" class="logout">
+        <a><i class="bi bi-box-arrow-right"></i>Đăng xuất</a>
+      </div>
+    </ul>
+  </div>
+</nav>

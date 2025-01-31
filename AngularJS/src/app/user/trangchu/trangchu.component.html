@@ -1,0 +1,85 @@
+<div class="home">
+  <div class="banner">
+    <div class="slideshow">
+      <img src="banner1.png" alt="Banner 1" />
+    </div>
+    <div class="banner-content">
+      <h3>CHÀO MỪNG BẠN ĐẾN VỚI</h3>
+      <h1>SPACE BOOKS</h1>
+      <p>
+        Một thư viện trực tuyến hiện đại, <br />mang đến cho người dùng một trải
+        nghiệm tri thức vô cùng tiện lợi và phong phú.
+      </p>
+      <button>ĐỌC NGAY</button>
+    </div>
+  </div>
+
+  <div class="header-content">
+    <div class="steps">
+      <div class="step">
+        <span class="icon"><i class="bi bi-check2-square"></i></span>
+        <p>Đầy Đủ Thể Loại</p>
+      </div>
+      <div class="step">
+        <span class="icon"><i class="bi bi-check-lg"></i></span>
+        <p>Cập Nhật Nhanh Chóng</p>
+      </div>
+      <div class="step">
+        <span class="icon"><i class="bi bi-link-45deg"></i></span>
+        <p>Thư Viện Trực Tuyến</p>
+      </div>
+      <div class="step">
+        <span class="icon"><i class="bi bi-person-arms-up"></i></span>
+        <p>Nhiệt Tình Hỗ Trợ</p>
+      </div>
+    </div>
+
+    <div class="info">
+      <div class="info-image">
+        <img src="gioithieu.png" alt="Giới thiệu" />
+      </div>
+      <div class="info-text">
+        <h2>SPACE BOOKS</h2>
+        <p>
+          Chào mừng đến với SPACE BOOKS – không gian khám phá sách đa dạng, từ
+          văn học đến khoa học, nghệ thuật và nhiều thể loại khác. Chúng tôi
+          mang đến một trải nghiệm đọc tuyệt vời, giúp bạn mở rộng cảm xúc qua
+          từng trang sách.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2 class="title">Mới Cập Nhật</h2>
+    <div class="grid">
+      <div class="card" (click)="goToBookDetail(book)" *ngFor="let book of books">
+        <div class="image-container">
+        <img [src]="book.image" [alt]="book.title" />
+      </div>
+        <h3>{{ book.title }}</h3>
+        <p>{{ book.description }}</p>
+      </div>
+    </div>
+    <button class="view-more-btn" (click)="goToCategory()">XEM THÊM</button>
+  </div>
+
+  <div class="info">
+    <div class="info-text">
+      <h2>TẠI SAO CHỌN CHÚNG TÔI?</h2>
+      <p>
+        Tại SPACE BOOKS, chúng tôi tạo ra một cộng đồng đọc sách trực tuyến, nơi
+        bạn có thể khám phá, thảo luận và chia sẻ những cuốn sách yêu thích mà
+        không cần phải mua chúng. Với các bài viết, đánh giá và thông tin chi
+        tiết về từng tác phẩm, chúng tôi giúp bạn dễ dàng tìm kiếm những cuốn
+        sách phù hợp. Chọn chúng tôi, bạn sẽ tìm thấy không gian để khám phá và
+        kết nối với những người cùng sở thích đọc sách.
+      </p>
+    </div>
+
+    <div class="info-image">
+      <img src="lydochon.png" alt="Lý do chọn" />
+    </div>
+  </div>
+  <div class="space"></div>
+</div>

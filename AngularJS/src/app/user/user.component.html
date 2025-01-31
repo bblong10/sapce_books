@@ -1,0 +1,17 @@
+
+<div id="header" class="header" [class.sticky]="isSticky">
+    <app-header></app-header>
+</div>
+
+<div class="container-fluid" (scroll)="onScroll($event)">
+    <router-outlet></router-outlet>
+</div>
+
+<div class="footer">
+    <app-footer></app-footer>
+</div>
+
+
+
+
+

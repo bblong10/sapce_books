@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="containerImg">
+      <img src="sign.png" alt="">
+  </div>
+
+  <div class="containerContent">
+    <h3>Chào bạn trở lại với SPACE BOOKS</h3>
+    <h1>ĐĂNG NHẬP</h1>
+    <form (ngSubmit)="login()" autocomplete="off">
+      <label for="email">Email</label>
+      <div class="inputRow">
+        <input type="email" placeholder="Email của bạn" [(ngModel)]="email" name="User_email" autocomplete="off" required>
+      </div>
+    
+      <label for="password">Mật khẩu</label>
+      <div class="inputRow">
+        <input type="password" id="password" placeholder="Mật khẩu của bạn" [(ngModel)]="password" name="password" required>
+      </div>
+      
+      <button type="submit">ĐĂNG NHẬP</button>
+    </form>
+    <h6>Đăng nhập bằng</h6>
+        <div class="logins">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-google"></i></a>
+        </div>
+    <p>Bạn chưa có tài khoản? <a routerLink="/auth/signup">ĐĂNG KÝ</a></p>
+  </div>
+</div>

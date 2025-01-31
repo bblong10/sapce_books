@@ -1,0 +1,231 @@
+.container-fluid {
+    width: 98%;
+    height: 85.8vh;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.container-fluid::-webkit-scrollbar {
+    width: 4px;
+}
+
+.container-fluid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.container-fluid::-webkit-scrollbar-thumb {
+    background: #bbbbbb;
+    border-radius: 10px;
+}
+
+.container-fluid::-webkit-scrollbar-thumb:hover {
+    background: #afafaf;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between; /* Đảm bảo các cột phân bổ đều */
+    gap: 10px; /* Khoảng cách giữa các cột */
+}
+
+.col-4 {
+    flex: 1; /* Các cột chiếm đều không gian */
+    padding: 10px; /* Khoảng cách bên trong các cột */
+}
+
+.stat-box {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.stat-box h4 {
+    margin: 10px 0;
+}
+
+.stat-box p {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.icon {
+    font-size: 60px;
+    margin-bottom: 10px;
+    
+}
+
+/* Các màu nền cho từng ô */
+.stat-box-1 {
+    background: linear-gradient(90deg, #ffbd96 0%, #fe8496 100%);
+    color: white;
+}
+
+.stat-box-2 {
+    background: linear-gradient(90deg, #fff694 0%, #fdc686 100%); 
+    color: white;
+}
+
+.stat-box-3 {
+    background: linear-gradient(90deg, #94ffea 0%, #88fd86 100%); 
+    color: white;
+}
+
+.row.mt-4 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.row.mt-4 .chart-bar {
+    flex: 0 0 60%;
+}
+
+
+.row.mt-4 .chart-pie {
+    flex: 0 0 30%;
+}
+
+
+
+.row.mt-5 {
+    margin: 1px;
+    background: white;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.book-image {
+    width: 100%;
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 30px;
+    object-fit: cover;
+}
+
+.books-expiring-container {
+    margin-top: 20px;
+    background: white;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.table-striped {
+    width: 100%;
+    margin-bottom: 0;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.table-striped thead tr {
+    background-color: black;
+    color: white;
+}
+
+.table-striped th,
+.table-striped td {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    vertical-align: middle;
+}
+
+/* Cột Tên sách */
+th:nth-child(1),
+td:nth-child(1) {
+    width: 30%;
+}
+
+/* Cột Nguòi mượn */
+th:nth-child(2),
+td:nth-child(2) {
+    width: 30%;
+}
+
+/* Cột Ngày hết hạn */
+th:nth-child(3),
+td:nth-child(3) {
+    width: 20%;
+}
+
+/* Cột Hành động */
+th:nth-child(4),
+td:nth-child(4) {
+    width: 20%;
+}
+
+.table-striped-striped tbody tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+.table-striped .btn {
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 5px;
+}
+
+.pagination button {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    color: #495057;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pagination button:hover {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+}
+
+.pagination button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination button:disabled {
+    background-color: #e9ecef;
+    color: #adb5bd;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+}
+
+.employee-table-striped-container .pagination {
+    margin-top: auto;
+}

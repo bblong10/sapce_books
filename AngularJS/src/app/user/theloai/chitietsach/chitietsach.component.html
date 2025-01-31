@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div *ngIf="loading" class="loading">
+    <p>Đang tải thông tin sách...</p>
+  </div>
+
+  <div *ngIf="!loading && errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div *ngIf="!loading && book" class="detail-book">
+    <div class="detail-book-image">
+      <img [src]="book.image" [alt]="book.title" />
+    </div>
+    <div class="detail-book-text">
+      <h2><span>Tên sách:</span> "{{ book.title }}"</h2>
+      <p><span>Thể loại:</span> {{ book.category || "Không xác định" }}</p>
+      <p><span>Tác giả:</span> {{ book.author }}</p>
+      <p><span>Nhà xuất bản:</span> {{ book.publisher }}</p>
+      <p>
+        <span>Ngày xuất bản:</span> {{ book.publishDate | date : "dd/MM/yyyy" }}
+      </p>
+      <p><span>Số lượng:</span> {{ book.quantity }}</p>
+      <p><span>Mã ISBN:</span> {{ book.isbn }}</p>
+      <p>
+        <span>Tình trạng:</span>
+        <span
+          class="status"
+          [ngClass]="book.isAvailable ? 'available' : 'unavailable'"
+        >
+          {{ book.isAvailable ? "Còn hàng" : "Hết hàng" }}
+        </span>
+      </p>
+      <p><span>Mô tả:</span> Chi tiết đang được cập nhật...</p>
+      <button class="detail-book-btn" (click)="goToBorrowBook()">
+        Mượn sách
+      </button>
+    </div>
+  </div>
+</div>
