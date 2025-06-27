@@ -90,8 +90,8 @@ CREATE TABLE user (
 
 INSERT INTO user (id, fullName, address, dob, role, email, password, isAtive) VALUES
 (1,'Đoàn Bảo Long','admin','2001-12-04 00:00:00','admin','doanbaolong1010@gmail.com','$2b$10$TiWCXcHMKAdcT5S.gbstmelgp3VsugctKq32Vow1bYOTd70BkFQ5q',1),
-(2,'Võ Đặng Thanh Trọng','Thành phố Hồ Chí Minh','2004-01-01 00:00:00','admin','vodangthanhtrong@gmail.com','$2b$10$70f9M.emNXoEmdlkrLbTrO/PR0IVXxCySal/otAfgjc07x4JC9iWi',1),
-(3,'Ngô Thị Thanh Ngân','Thành phố Hồ Chí Minh','2004-01-01 00:00:00','admin','ngothithanhngan@gmail.com','$2b$10$HsHJV1MPEjGdGrgpYZOCBuigBRiu3tvtdpgTNAk1dTO2xEU7vG4vy',1);
+(2,'Hà Tuấn Khang','Thành phố Hồ Chí Minh','2004-01-01 00:00:00','admin','admin@gmail.com','$2b$10$70f9M.emNXoEmdlkrLbTrO/PR0IVXxCySal/otAfgjc07x4JC9iWi',1),
+(3,'Huỳnh Công Nam Dương','Thành phố Hồ Chí Minh','2004-01-01 00:00:00','admin','admin@gmail.com','$2b$10$HsHJV1MPEjGdGrgpYZOCBuigBRiu3tvtdpgTNAk1dTO2xEU7vG4vy',1);
 
 -- Bảng loan
 DROP TABLE IF EXISTS loan;
